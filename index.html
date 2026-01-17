@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MVS | Marine Visual Studio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        dark: '#111111',
+                        light: '#F3F4F6',
+                        paper: '#FFFFFF',
+                        neon: '#CCF381', // The Businity Lime Green
+                        neonHover: '#bce865',
+                        silver: '#E5E7EB',
+                        'silver-metallic': '#9CA3AF',
+                        platinum: '#E2E2E2',
+                    },
+                    fontFamily: {
+                        sans: ['"Manrope"', 'sans-serif'],
+                        display: ['"Space Grotesk"', 'sans-serif'],
+                    },
+                    backgroundImage: {
+                        'grid-pattern': "linear-gradient(to right, #f0f0f0 1px, transparent 1px), linear-gradient(to bottom, #f0f0f0 1px, transparent 1px)",
+                        'silver-sheen': "linear-gradient(45deg, transparent 25%, rgba(255,255,255,0.5) 50%, transparent 75%)",
+                        'neon-sheen': "linear-gradient(45deg, transparent 25%, rgba(255,255,255,0.8) 50%, transparent 75%)",
+                        'premium-silver': "linear-gradient(135deg, #F9FAFB 0%, #E5E7EB 100%)",
+                        'metallic-shine': "linear-gradient(135deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0) 50%, rgba(255,255,255,0.1) 100%)",
+                    },
+                    animation: {
+                        'shine': 'shine 1s cubic-bezier(0.4, 0, 0.2, 1)',
+                    },
+                    keyframes: {
+                        shine: {
+                            '0%': { transform: 'translateX(-100%) skewX(-12deg)' },
+                            '100%': { transform: 'translateX(200%) skewX(-12deg)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #FFFFFF;
+            color: #111111;
+        }
+        
+        /* Modern Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #FFFFFF; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #E5E7EB; 
+            border-radius: 3px;
+        }
+
+        .text-outline {
+            -webkit-text-stroke: 1px #111111;
+            color: transparent;
+        }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "lucide-react": "https://esm.sh/lucide-react@^0.562.0",
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "react": "https://esm.sh/react@^19.2.3"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+<body class="text-dark font-sans antialiased overflow-x-hidden selection:bg-neon selection:text-dark">
+    <div id="root"></div>
+<script type="module" src="/index.tsx"></script>
+</body>
+</html>
