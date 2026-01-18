@@ -90,7 +90,7 @@ const Hero: React.FC = () => {
                     {/* Layer 1: "BEFORE" (Grayscale / Raw Look) */}
                     <div className="absolute inset-0">
                         <img 
-                            src="https://images.unsplash.com/photo-1569263979104-865ab7cd8d13?q=80&w=2070" 
+                            src="Captura de ecrã 2025-12-25 204240.png" 
                             alt="Raw Boat Photo"
                             className="w-full h-full object-cover grayscale contrast-125" 
                         />
@@ -102,7 +102,7 @@ const Hero: React.FC = () => {
                     {/* Layer 2: "AFTER" (Color / Edit Look) */}
                     <div className="absolute inset-0 animate-scanner-clip z-10 bg-white">
                          <img 
-                            src="https://images.unsplash.com/photo-1569263979104-865ab7cd8d13?q=80&w=2070" 
+                            src="right.jpeg" 
                             alt="MVS Edited Boat"
                             className="w-full h-full object-cover saturate-[1.3]" 
                         />
