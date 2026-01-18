@@ -90,7 +90,7 @@ const Hero: React.FC = () => {
                     {/* RIGHT IMAGE (Foreground) - Uses "right.png" */}
                     <div className="absolute inset-0 animate-scanner-clip z-10 bg-white">
                          <img 
-                            src="/right.png" 
+                            src="/right.jpeg" 
                             alt="MVS Render"
                             className="w-full h-full object-cover saturate-[1.1]" 
                         />
