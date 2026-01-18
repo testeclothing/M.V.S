@@ -10,15 +10,12 @@ const Hero: React.FC = () => {
       <div className="absolute top-0 right-0 w-2/3 h-full bg-gray-50/50 -z-0 transform skew-x-12 translate-x-32 hidden lg:block"></div>
       <div className="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-white to-transparent z-10 pointer-events-none"></div>
 
-      {/* 
-         ANIMATION SETTINGS 
-         Changed to go from 0% (Full Left) to 100% (Full Right)
-      */}
+      {/* Animation Settings */}
       <style>{`
         @keyframes scan-clip {
-          0% { clip-path: inset(0 100% 0 0); }   /* Hide Top Image completely (Show bottom image) */
+          0% { clip-path: inset(0 100% 0 0); }
           50% { clip-path: inset(0 50% 0 0); }
-          100% { clip-path: inset(0 0% 0 0); }   /* Show Top Image completely */
+          100% { clip-path: inset(0 0% 0 0); }
         }
         @keyframes scan-line {
           0% { left: 0%; }
@@ -26,7 +23,7 @@ const Hero: React.FC = () => {
           100% { left: 100%; }
         }
         .animate-scanner-clip {
-          animation: scan-clip 4s ease-in-out infinite alternate; /* 4 seconds, back and forth */
+          animation: scan-clip 4s ease-in-out infinite alternate;
         }
         .animate-scanner-line {
           animation: scan-line 4s ease-in-out infinite alternate;
@@ -38,7 +35,6 @@ const Hero: React.FC = () => {
             
             {/* TEXT SECTION */}
             <div className="lg:col-span-5 flex flex-col justify-center order-1 text-center lg:text-left mt-4 lg:mt-0">
-                
                 <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-gray-100 border border-gray-200 text-[10px] font-bold uppercase tracking-[0.2em] text-gray-500 mb-6 rounded-sm w-fit mx-auto lg:mx-0">
                     <span className="w-1.5 h-1.5 bg-neon rounded-full animate-pulse"></span>
                     AI Virtual Staging
@@ -77,17 +73,13 @@ const Hero: React.FC = () => {
 
             {/* VISUAL SECTION */}
             <div className="lg:col-span-7 w-full order-2 flex items-center justify-center relative pb-10 lg:pb-0">
-                
                 <div className="relative w-full aspect-[4/3] lg:aspect-[16/10] rounded-xl overflow-hidden shadow-2xl border-4 border-white ring-1 ring-gray-100 group bg-gray-100">
                     
-                    {/* 
-                        LAYER 1: The "Before" Image (Background)
-                        Note: "grayscale" class removed as requested.
-                    */}
+                    {/* LEFT IMAGE (Background) - Uses "left.png" */}
                     <div className="absolute inset-0">
                         <img 
-                            src="/Capturade ecrã 2025-12-25 204240.png" 
-                            alt="Original Dry Dock Photo"
+                            src="/left.png" 
+                            alt="Raw Input"
                             className="w-full h-full object-cover" 
                         />
                         <div className="absolute top-4 left-4 bg-black/60 backdrop-blur-md px-2 py-1 rounded-sm border border-white/10">
@@ -95,13 +87,11 @@ const Hero: React.FC = () => {
                         </div>
                     </div>
 
-                    {/* 
-                        LAYER 2: The "After" Image (Foreground - Animated Clip Path)
-                    */}
+                    {/* RIGHT IMAGE (Foreground) - Uses "right.png" */}
                     <div className="absolute inset-0 animate-scanner-clip z-10 bg-white">
                          <img 
                             src="/right.png" 
-                            alt="MVS Edited Boat"
+                            alt="MVS Render"
                             className="w-full h-full object-cover saturate-[1.1]" 
                         />
                          <div className="absolute top-4 right-4 bg-neon px-2 py-1 rounded-sm shadow-md">
@@ -111,10 +101,10 @@ const Hero: React.FC = () => {
                         </div>
                     </div>
 
-                    {/* Scanner Line (Animated Position) */}
+                    {/* Scanner Line */}
                     <div className="absolute inset-y-0 w-1 bg-neon shadow-[0_0_20px_rgba(204,243,129,0.8)] z-20 animate-scanner-line opacity-90"></div>
 
-                    {/* Stats Card */}
+                    {/* Stats */}
                     <div className="absolute bottom-4 right-4 z-30 flex flex-col gap-2">
                         <div className="bg-black/80 backdrop-blur-md border border-white/10 p-2.5 rounded flex items-center gap-3 w-40 shadow-xl">
                             <div className="w-8 h-8 bg-neon/20 rounded flex items-center justify-center shrink-0">
@@ -131,7 +121,6 @@ const Hero: React.FC = () => {
             </div>
 
         </div>
-
         <div className="absolute bottom-4 left-1/2 -translate-x-1/2 opacity-30 animate-pulse hidden lg:block">
             <ArrowDown className="w-4 h-4 text-dark" />
         </div>
