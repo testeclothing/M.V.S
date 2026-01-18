@@ -1,6 +1,6 @@
 import React from 'react';
 import Button from './Button';
-import { ArrowDown, Zap, TrendingUp, MousePointer2 } from 'lucide-react';
+import { ArrowDown, Zap, TrendingUp } from 'lucide-react';
 
 const Hero: React.FC = () => {
   return (
@@ -10,49 +10,50 @@ const Hero: React.FC = () => {
       <div className="absolute top-0 right-0 w-2/3 h-full bg-gray-50/50 -z-0 transform skew-x-12 translate-x-32 hidden lg:block"></div>
       <div className="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-white to-transparent z-10 pointer-events-none"></div>
 
-      {/* Animation Styles for the Scanner */}
+      {/* 
+         ANIMATION SETTINGS 
+         Changed to go from 0% (Full Left) to 100% (Full Right)
+      */}
       <style>{`
         @keyframes scan-clip {
-          0%, 100% { clip-path: inset(0 60% 0 0); }
-          50% { clip-path: inset(0 0% 0 0); }
+          0% { clip-path: inset(0 100% 0 0); }   /* Hide Top Image completely (Show bottom image) */
+          50% { clip-path: inset(0 50% 0 0); }
+          100% { clip-path: inset(0 0% 0 0); }   /* Show Top Image completely */
         }
         @keyframes scan-line {
-          0%, 100% { left: 40%; }
-          50% { left: 100%; }
+          0% { left: 0%; }
+          50% { left: 50%; }
+          100% { left: 100%; }
         }
         .animate-scanner-clip {
-          animation: scan-clip 6s ease-in-out infinite alternate;
+          animation: scan-clip 4s ease-in-out infinite alternate; /* 4 seconds, back and forth */
         }
         .animate-scanner-line {
-          animation: scan-line 6s ease-in-out infinite alternate;
+          animation: scan-line 4s ease-in-out infinite alternate;
         }
       `}</style>
 
       <div className="container mx-auto px-6 md:px-12 relative z-10 flex flex-col justify-center h-full pb-8 lg:pb-0">
         <div className="flex flex-col lg:grid lg:grid-cols-12 gap-8 lg:gap-16 items-center h-full justify-center">
             
-            {/* LEFT SIDE: Text & Copywriting */}
+            {/* TEXT SECTION */}
             <div className="lg:col-span-5 flex flex-col justify-center order-1 text-center lg:text-left mt-4 lg:mt-0">
                 
-                {/* Clean "High-End" Badge */}
                 <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-gray-100 border border-gray-200 text-[10px] font-bold uppercase tracking-[0.2em] text-gray-500 mb-6 rounded-sm w-fit mx-auto lg:mx-0">
                     <span className="w-1.5 h-1.5 bg-neon rounded-full animate-pulse"></span>
                     AI Virtual Staging
                 </div>
                 
-                {/* Main Headline */}
                 <h1 className="font-display text-5xl lg:text-7xl font-bold text-dark leading-[0.95] mb-6 tracking-tighter">
                     Turn Dry Dock <br className="hidden lg:block"/>
                     Photos Into <br className="hidden lg:block"/>
                     <span className="text-gray-400">Sold Yachts.</span>
                 </h1>
 
-                {/* Description */}
                 <p className="text-gray-500 text-sm lg:text-lg max-w-lg mb-8 font-light leading-relaxed border-l-2 border-neon pl-4 mx-auto lg:mx-0 text-left">
                     Don't let bad weather or warehouse lighting kill your listing. We transform static inventory into <span className="text-dark font-medium">high-converting water assets</span> in 24 hours.
                 </p>
 
-                {/* Buttons */}
                 <div className="flex flex-col sm:flex-row gap-4 items-center lg:justify-start w-full">
                      <Button variant="primary" onClick={() => document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' })} className="w-full sm:w-auto shadow-xl shadow-neon/20 hover:shadow-neon/40 transition-all">
                         Start Your Refit
@@ -62,7 +63,6 @@ const Hero: React.FC = () => {
                     </button>
                 </div>
 
-                {/* Social Proof (Avatars) */}
                 <div className="mt-8 flex items-center justify-center lg:justify-start gap-4 opacity-80">
                     <div className="flex -space-x-2">
                         {[1,2,3].map(i => (
@@ -75,36 +75,34 @@ const Hero: React.FC = () => {
                 </div>
             </div>
 
-            {/* RIGHT SIDE: The Visual Scanner */}
+            {/* VISUAL SECTION */}
             <div className="lg:col-span-7 w-full order-2 flex items-center justify-center relative pb-10 lg:pb-0">
                 
-                {/* Image Container */}
                 <div className="relative w-full aspect-[4/3] lg:aspect-[16/10] rounded-xl overflow-hidden shadow-2xl border-4 border-white ring-1 ring-gray-100 group bg-gray-100">
                     
                     {/* 
-                       📢 IMPORTANT: TO USE YOUR OWN IMAGE
-                       1. Upload your image to the 'public' folder (e.g., 'boat.jpg')
-                       2. Change src below to: src="/boat.jpg" 
+                        LAYER 1: The "Before" Image (Background)
+                        Note: "grayscale" class removed as requested.
                     */}
-
-                    {/* Layer 1: "BEFORE" (Grayscale / Raw Look) */}
                     <div className="absolute inset-0">
                         <img 
-                            src="Captura de ecrã 2025-12-25 204240.png" 
-                            alt="Raw Boat Photo"
-                            className="w-full h-full object-cover grayscale contrast-125" 
+                            src="/Capturade ecrã 2025-12-25 204240.png" 
+                            alt="Original Dry Dock Photo"
+                            className="w-full h-full object-cover" 
                         />
                         <div className="absolute top-4 left-4 bg-black/60 backdrop-blur-md px-2 py-1 rounded-sm border border-white/10">
-                            <span className="text-white/70 text-[9px] font-mono uppercase tracking-widest">RAW_INPUT.CR2</span>
+                            <span className="text-white/70 text-[9px] font-mono uppercase tracking-widest">RAW INPUT</span>
                         </div>
                     </div>
 
-                    {/* Layer 2: "AFTER" (Color / Edit Look) */}
+                    {/* 
+                        LAYER 2: The "After" Image (Foreground - Animated Clip Path)
+                    */}
                     <div className="absolute inset-0 animate-scanner-clip z-10 bg-white">
                          <img 
-                            src="right.jpeg" 
+                            src="/right.png" 
                             alt="MVS Edited Boat"
-                            className="w-full h-full object-cover saturate-[1.3]" 
+                            className="w-full h-full object-cover saturate-[1.1]" 
                         />
                          <div className="absolute top-4 right-4 bg-neon px-2 py-1 rounded-sm shadow-md">
                              <span className="text-dark text-[9px] font-bold uppercase tracking-widest flex items-center gap-1.5">
@@ -113,10 +111,10 @@ const Hero: React.FC = () => {
                         </div>
                     </div>
 
-                    {/* The Moving Scanner Line */}
+                    {/* Scanner Line (Animated Position) */}
                     <div className="absolute inset-y-0 w-1 bg-neon shadow-[0_0_20px_rgba(204,243,129,0.8)] z-20 animate-scanner-line opacity-90"></div>
 
-                    {/* Floating Stat Card */}
+                    {/* Stats Card */}
                     <div className="absolute bottom-4 right-4 z-30 flex flex-col gap-2">
                         <div className="bg-black/80 backdrop-blur-md border border-white/10 p-2.5 rounded flex items-center gap-3 w-40 shadow-xl">
                             <div className="w-8 h-8 bg-neon/20 rounded flex items-center justify-center shrink-0">
@@ -134,7 +132,6 @@ const Hero: React.FC = () => {
 
         </div>
 
-        {/* Bottom Scroll Arrow */}
         <div className="absolute bottom-4 left-1/2 -translate-x-1/2 opacity-30 animate-pulse hidden lg:block">
             <ArrowDown className="w-4 h-4 text-dark" />
         </div>
